@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/hackermondev
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://daniel.is-a.dev
+  * I am hackermondev (https://keybase.io/hackermondev) on keybase.
+  * I have a public key with fingerprint 19C2 ADC7 DFD1 00F3 446F  6AFB 7DDD FA24 2CB0 F53E
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101a749e8cdab406c58fe90ef1477057bb206c39c70dc0a2fb833801f981fea54740a",
+      "fingerprint": "19c2adc7dfd100f3446f6afb7dddfa242cb0f53e",
+      "host": "keybase.io",
+      "key_id": "7dddfa242cb0f53e",
+      "kid": "0101a749e8cdab406c58fe90ef1477057bb206c39c70dc0a2fb833801f981fea54740a",
+      "uid": "46f5854eba49f3b71213c6e6fe2db719",
+      "username": "hackermondev"
+    },
+    "service": {
+      "hostname": "daniel.is-a.dev",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1627748552,
+  "expire_in": 157680000,
+  "prev": "653794ca311225d08a4664e240e2d59b080678d08dec751d9139c1e64ff10302",
+  "seqno": 5,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMIvAnicrZJbSBVBGMeP5aVjdhG6kA9RU0LB8TSz9z0h+ZBREBUkVKSdZndmbNN2
+T7vrSTMfDE7RDQoEI7MLBNWJiiLppmI3KDQlg6iXkm5kFyrKjCBqVuqtx+ZlmG9+
+3//7fx/f7XGjQ7kZee91Z97S3usZ3TeO1IRwVu3demA4pA7E6kEVHbloNaGeH6+y
+CIgBiCDCqqRTzSTYkKBiyhqjOqQMSaoKZdUwBB4UdVOFxIRYYIYmihpETNcQo1iW
+VAliEAHMsiupm3At2+eySDcFTEyVMIIgZKIkKUzBzFAJIQwLkmAakMki5YkbHC/I
+4OYM7NGo5fAYf8RH7P2D/8++a0bkuD1ZkyVqYElnoqEiAYmmQhVGBcJfegB61LXx
+JsrpDdisou4mxyY0CRoigP8kLZMGww26+UMRbFu0Omp5RTgagBGQcB3fMZ3qQML3
+E14sSPbrEgG9hRrxPzpxw7IJHyfPSFLXsxwbxBAnTd8KhJEiqKqkybIQAbQ2Ybk0
+bgWErCoa5Ceow8vFgCKLqi6ZWERIEGQCNSwpikQFCfKuZN2AGlRUjccJNVUZER3x
+cSGqSIwhKEIBBJ1tth0Qk7lNXMklPavSxn6NS0HDza7yzFBGbig7a1SwZqHc8MS/
+yzeUmfOzYHdbe+/0Y/ejTcsGlnUvz181KX4vb+DLc8e89f3km7rBD08uoLMTtp9w
+uq4eXHhtemr/z4zzq16Up0rB7Jtn0mX7CntWt2ete/gj2+1Y86CsNVnXufzt0OcB
+NKROjZ2oKDj86s6N6LjCZwdqzEOLSq/MmInXtrYsfjU/9fBXNGdB8crxT/OVy3vW
+0J6jB/0pTUtq23cUt/SlP84t+PQt3ZHTO6F4dWNeYmfp+qHGyKJHpyeHzze35fej
+4XfDYf9YZ8WuWcVLX8MxLa3hl18HL5Us7ntc6a4oLLi4cGO6JLe0/9xxp7aE7T07
+OGWOVtQQLnmRTG2b1nwqs97bmhh79NzH06nvHb8BcWdC+w==
+=bnzx
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/hackermondev
+
+==================================================================

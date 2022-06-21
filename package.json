@@ -1,0 +1,43 @@
+{
+  "name": "hackermon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "bash scripts/start.sh",
+    "dev": "node .",
+    "make-pretty": "npx prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@replit/database": "^2.0.1",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-limit": "^0.1.0",
+    "express-minify-html": "^0.12.0",
+    "express-rate-limit": "^6.4.0",
+    "fetch": "^1.1.0",
+    "helmet": "^4.6.0",
+    "minify": "^7.0.2",
+    "mongoose": "^5.13.2",
+    "ms": "^2.1.3",
+    "node-fetch": "^2.6.1",
+    "openai": "0.0.9",
+    "path": "^0.12.7",
+    "showdown": "^1.9.1",
+    "sitemap": "^7.0.0",
+    "teaser": "^0.1.1",
+    "url-slug": "^3.0.2",
+    "uuid": "^8.3.2",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "prettier": "2.3.2"
+  }
+}

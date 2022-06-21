@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../components/head'); %>
+  </head>
+  <body class="ml-12 g-white dark:bg-gray-800 dark:text-white">
+    <h1 class="mb-6 text-5xl font-bold tracking-tight">
+		<br>
+    <% if(isEditing == true) { %>
+      Editing blog <%= data.old_blog_id %>
+    <% } else { %>
+			Creating a new blog post.
+			<% } %>
+    </h1>
+
+    <form method="POST" id="form" action="/blog/preview">
+      <input type="hidden" name="old_blog_id" value="<%= data.old_blog_id %>">
+
+			<div class="grid gap-6 mb-6 lg:grid-cols-2">
+			<div>
+            <label for="blog_title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Blog title:</label>
+            <input type="text" id="blog_title" name="blog_title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required>
+        </div>
+
+				<br>
+				<div>
+					<label for="blog_privacy" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Privacy:</label>
+<select id="blog_privacy" name="blog_privacy" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+  <option value="public">Public</option>
+  <option value="private">Private</option>
+  <option value="unlisted">Unlisted</option>
+</select>
+				</div>
+
+				<br>
+				<div>
+					<label for="blog_text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Blog Post:</label>
+<textarea name="blog_data" id="blog_text" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" style="width: 1050px; height: 350px;" placeholder="..."><%- data.markdown %></textarea>
+				</div>
+			</div>
+			
+
+			<button type="button" onclick="preview()" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Preview</button>
+
+			<button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onclick="create()">Save</button>
+    </form>
+
+    <%if (renderAnalytics == true) { %>
+      <script src="/scripts/science.js"></script>
+
+      <script>
+        window.tracker = ackeeTracker.create(`https://<%= analytics.AckeeHost %>`, {
+          ignoreLocalhost: true,
+          detailed: true,
+          ignoreOwnVisits: false
+        })
+
+        window.tracker.record('<%= analytics.AckeeID %>')
+      </script>
+    <% } %>
+    
+    <script>
+      var form = document.getElementById('form')
+
+      function create(){
+        form.action = '/blog/submit'
+
+        form.submit()
+      }
+
+      function preview(){
+        form.action = '/blog/preview'
+
+        form.submit()
+      }
+    </script>
+  </body>
+</html>

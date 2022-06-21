@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./components/head'); %>
+  </head>
+  <body class="ml-12 bg-white dark:bg-gray-800 dark:text-white">
+		<br/><br/>
+
+		<a href="/" class="text-blue-600 dark:text-blue-500 hover:underline">← Return home?</a>
+		<h1 class="mb-6 text-5xl font-bold tracking-tight">Not found.</h1>
+					
+    <%if (meta.renderAnalytics == true) { %>
+      <script src="/scripts/science.js"></script>
+
+      <script>
+        window.tracker = ackeeTracker.create(`https://<%= analytics.AckeeHost %>`, { ignoreLocalhost: true,detailed: true, ignoreOwnVisits: false })
+
+        window.tracker.record('<%= analytics.AckeeID %>')
+      </script>
+    <% } %>
+
+		<script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+  </body>
+</html>

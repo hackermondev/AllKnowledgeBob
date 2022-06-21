@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../components/head'); %>
+		<style>
+			.utterances {
+				position: fixed;
+			}
+		</style>
+  </head>
+	
+  <body class="ml-12 bg-white dark:bg-gray-800 dark:text-white overflow-auto">
+		<br><br>
+
+		<h1 class="mb-6 text-5xl font-bold tracking-tight"><%= blog.title %></h1>
+		    <span class="text-gray"><%= blog.createdAt %> (<%= blog.viewCount %> views)</span>
+
+		<br><br>
+    <div id="content">
+      <%- blog.html_content %>
+    </div>
+
+					<br><br><hr>
+
+			<div class="scroll">
+					<script src="https://utteranc.es/client.js"
+        repo="hackermondev/daniel.is-a.dev"
+        issue-term="pathname"
+        label="blog-comments"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+			</div>
+</script>
+
+			
+    <%if (renderAnalytics == true) { %>
+      <script src="/scripts/science.js"></script>
+
+      <script>
+        window.tracker = ackeeTracker.create(`https://<%= analytics.AckeeHost %>`, {
+          ignoreLocalhost: true,
+          detailed: true,
+          ignoreOwnVisits: false
+        })
+
+        window.tracker.record('<%= analytics.AckeeID %>')
+      </script>
+    <% } %> 
+
+    <%if (isPreviewMode == true) { %>
+      <script>
+        window.replaceState({}, `/blog/<%= blog.slug %>`)
+      </script>
+    <% } %>
+
+    <script>
+      document.addEventListener('click', function(e){
+        if(e.target.tagName=="A" && e.target.className != "normal-link"){
+          e.preventDefault()
+          window.open(e.target.href, '_blank').focus();
+
+          if(window.tracker){
+            window.tracker.action('d8d5eb8e-d290-4c67-b4df-75d301073836', {
+              key: 'Click',
+              value: e.target.href
+            })
+          }
+        }
+      })
+
+      fetch(`${location.href}/increase_counter`)
+    </script>
+  </body>
+</html>

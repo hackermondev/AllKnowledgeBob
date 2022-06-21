@@ -1,0 +1,8 @@
+{
+  "/": {
+    "Name": "All Knowledge Bob",
+    "Description": "Bob is an artificial intelligence that can answer any query. It has been trained on billions of data points and can answer any question. Come give it a shot!",
+    "ShouldShowOnSearchEngine": true,
+    "Page": "/"
+  }
+}

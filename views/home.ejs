@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+		<link rel="stylesheet" href="/static/style/home.css" type="text/css" />
+    <%- include('./components/head'); %>
+  </head>
+	
+  <body class="bg-white dark:bg-gray-800 dark:text-white">
+		<%- include('./components/sharemodal'); %>
+
+		<%if (banner != undefined) { %>
+			<%- include('./components/banner'); %>
+		<% } %>
+									
+		<main class="">
+				<div class="flex h-screen justify-center items-center" id="loading" style="display: none">
+					<div class="text-center max-w-sm p-1.5">
+						<img
+							src="/static/images/bob-rounded.png"
+							alt="Bob rounded"
+						/>
+
+						<p class="mb-9 text-gray-500 dark:text-gray-400">BOB IS LOADING...</p>
+						<noscript>Please enable scripts to run this app</noscript>
+					</div>
+				</div>
+
+			
+				<div id="app" class="flex h-screen justify-center items-center">
+					<div class="text-center">
+						<br>
+						<img
+							src="/static/images/bob-rounded.png"
+							alt="Bob rounded"
+							style="width: 50px; height: 50px; display: inline-block;"
+						/>
+						<br><br>
+								
+								<button href="#" data-modal-toggle="share-modal" class="no-underline hover:underline text-sky-400" style="float: right; " id="shareresponsebutton" data-modal-toggle="share-modal">
+									<i class="fas fa-reply"></i>
+									Share this response
+								</button>
+						
+						<div class="me">	
+<!-- 							10 rows, 69 cols -->
+							<div 
+								id="response"
+								class=" text-gray-400 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+								style="resize: none; outline: none; height: 15rem;  text-align: initial; padding:10px 10px;" 
+							>
+								<%if (data.response) { %>
+						      <%= data.response %>
+						    <% } else { %>	
+									Bob will response here...
+								<% } %>
+							</div>
+						</div>
+
+						<br>
+						<div class="you">
+							<form id="form">
+								<input 
+									type="text" 
+									id="yourquestion" 
+									class="disabled bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+									style="display: inline-block; width: 25rem;"
+									placeholder="Ask Bob any question." 
+									value="<%= data.prompt %>"
+									maxlength="50"
+								required>
+							</form>
+						</div>
+					</div>
+				</div>
+		</main>
+
+		<%- include('./components/footer'); %>
+<!-- 		<hr> -->
+		
+<!--     <%if (renderAnalytics == true) { %>
+      <script src="/scripts/science.js"></script>
+
+      <script>
+        window.tracker = ackeeTracker.create(`https://<%= analytics.AckeeHost %>`, { ignoreLocalhost: true,detailed: true, ignoreOwnVisits: false })
+
+        window.tracker.record('<%= analytics.AckeeID %>')
+      </script>
+    <% } %> -->
+
+		<script src="/scripts/home.js"></script>
+  </body>
+</html>

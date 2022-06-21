@@ -1,0 +1,9 @@
+#response {
+  width: 39rem;
+}
+
+@media only screen and (max-width: 760px) {
+  #response {
+    width: 100%;
+  }
+}
