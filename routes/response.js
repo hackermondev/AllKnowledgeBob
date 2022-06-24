@@ -9,9 +9,6 @@ const openai = require("../client/openai");
 const cached = require("../client/cache");
 const analytics = require("../meta/analytics.json");
 
-const { SitemapStream, streamToPromise } = require("sitemap");
-const { createGzip } = require("zlib");
-const { Readable } = require("stream");
 
 const limiter = rateLimit({
   windowMs: 15 * 1000,
@@ -56,11 +53,11 @@ router.post("/", async (req, res) => {
   const ip = req.headers["x-forwarded-for"];
 
   if (!stream) {
-    await cached.createCachedText(text, response, ip);
+    const id = await cached.createCachedText(text, response, ip);
     return res.json({
       error: null,
       response,
-      id: response.id,
+      id,
     });
   } else {
     const id = v4();
@@ -88,6 +85,7 @@ router.get("/:id", async (req, res) => {
     renderAnalytics: true,
     analytics: require("../meta/analytics.json"),
     isProduction: process.env["NODE_ENV"] == "production",
+		banner: {}
   });
 });
 

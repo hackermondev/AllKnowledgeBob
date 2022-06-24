@@ -1,0 +1,1 @@
+npx tailwindcss -o static/style/tailwind.css

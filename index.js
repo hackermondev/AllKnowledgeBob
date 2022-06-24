@@ -54,25 +54,11 @@ let app = express();
 app.use((req, res, next) => {
   if (req.headers["host"] != "bobbot.ml") {
     return res.redirect(`https://bobbot.ml${req.url}`);
-  }
+  } 
 
   next();
 });
 
-app.use((req, res, next) => {
-  if (
-    req.path.search("static") == -1 &&
-    req.path.search("scripts") == -1 &&
-    req.path.search("arc-sw.js") == -1
-  ) {
-    logger.log(
-      "info",
-      `${req.method} ${req.path}. ua: ${req.headers["user-agent"]} ip: ${req.headers["x-forwarded-for"]}`
-    );
-  }
-
-  next();
-});
 
 // Security & Improvment Middleware
 
@@ -107,6 +93,23 @@ app.use(express.static("static"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
+
+
+app.use((req, res, next) => {
+  if (
+    req.path.search("static") == -1 &&
+    req.path.search("scripts") == -1 &&
+    req.path.search("arc-sw.js") == -1
+  ) {
+    logger.log(
+      "info",
+      `${req.method} ${req.path}. ua: ${req.headers["user-agent"]} ip: ${req.headers["x-forwarded-for"]}. data: ${JSON.stringify(req.body)}`
+    );
+  }
+
+  next();
+});
+
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
