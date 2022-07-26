@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+		<link rel="stylesheet" href="/static/style/home.css" type="text/css" />
+    <%- include('./components/head'); %>
+  </head>
+	
+  <body class="bg-white dark:bg-gray-800 dark:text-white">
+		<main class="">
+				<div class="flex h-screen justify-center items-center" id="loading">
+					<div class="text-center max-w-sm p-1.5">
+						<img
+							src="/static/images/bob-rounded.png"
+							alt="Bob rounded"
+						/>
+
+						<p class="mb-9 text-gray-500 dark:text-gray-400">BOB IS CURRENTLY OFFLINE</p>
+						<noscript>Please enable scripts to run this app</noscript>
+					</div>
+				</div>
+		</main>
+
+		<%- include('./components/footer'); %>
+  </body>
+</html>

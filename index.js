@@ -22,9 +22,10 @@ let meta = {
   analytics: require("./meta/analytics.json"),
   isProduction: process.env["NODE_ENV"] == "production",
   meta: require("./meta/meta.json"),
+	offline: false,
   banner: {
     smallTitle: `Check out our post on Replit Community`,
-    bigTitle: `We just released Bob! Be sure to check out our post on Replit Community`,
+    bigTitle: `Be sure to check out our post on Replit Community`,
     buttonName: "Replit",
     buttonURL: "https://replit.com/@HackermonDev/AllKnowledgeBob?v=1",
   },
@@ -86,6 +87,8 @@ if (process.env["NODE_ENV"] == "production") {
  // );
 }
 
+
+
 app.use("/static", express.static("static"));
 app.use(express.static("static"));
 
@@ -114,6 +117,25 @@ app.use((req, res, next) => {
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+if(meta.offline) {
+	app.use((req, res) => {
+		const metaForPage = JSON.parse(JSON.stringify(meta));
+	  metaForPage["data"] = {};
+	  metaForPage["meta"] = meta["meta"][req.path];
+		metaForPage["renderAnalytics"] = false;
+	
+	  if (req.header("dnt") == 1) {
+	    metaForPage["renderAnalytics"] = false;
+	  }
+	
+	  if (meta.isProduction == true) {
+	    metaForPage["cache"] = true;
+	  }
+		
+		res.render('offline', metaForPage);
+	});	
+};
+
 // Routes
 app.use("/response", response);
 
@@ -138,7 +160,7 @@ app.get("/", async (req, res) => {
 
   if (meta.isProduction == true) {
     metaForPage["cache"] = true;
-  }
+  } 
 
   res.render(`home`, metaForPage);
 });
