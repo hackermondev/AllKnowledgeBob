@@ -33,7 +33,7 @@ async function findCached(text) {
 
   const responses = await mongo.Response.find({
     tokenGroup,
-		token,
+    token,
   }).exec();
   if (responses.length == 0)
     return {

@@ -22,7 +22,7 @@ let meta = {
   analytics: require("./meta/analytics.json"),
   isProduction: process.env["NODE_ENV"] == "production",
   meta: require("./meta/meta.json"),
-	offline: false,
+  offline: false,
   banner: {
     smallTitle: `Check out our post on Replit Community`,
     bigTitle: `Be sure to check out our post on Replit Community`,
@@ -55,11 +55,10 @@ let app = express();
 app.use((req, res, next) => {
   if (req.headers["host"] != "bobbot.ml") {
     return res.redirect(`https://bobbot.ml${req.url}`);
-  } 
+  }
 
   next();
 });
-
 
 // Security & Improvment Middleware
 
@@ -81,13 +80,11 @@ if (process.env["NODE_ENV"] == "production") {
   app.use(compression());
 
   // app.use(
-    // helmet({
-    //  contentSecurityPolicy: false,
+  // helmet({
+  //  contentSecurityPolicy: false,
   //  })
- // );
+  // );
 }
-
-
 
 app.use("/static", express.static("static"));
 app.use(express.static("static"));
@@ -97,7 +94,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
-
 app.use((req, res, next) => {
   if (
     req.path.search("static") == -1 &&
@@ -106,35 +102,36 @@ app.use((req, res, next) => {
   ) {
     logger.log(
       "info",
-      `${req.method} ${req.path}. ua: ${req.headers["user-agent"]} ip: ${req.headers["x-forwarded-for"]}. data: ${JSON.stringify(req.body)}`
+      `${req.method} ${req.path}. ua: ${req.headers["user-agent"]} ip: ${
+        req.headers["x-forwarded-for"]
+      }. data: ${JSON.stringify(req.body)}`
     );
   }
 
   next();
 });
 
-
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-if(meta.offline) {
-	app.use((req, res) => {
-		const metaForPage = JSON.parse(JSON.stringify(meta));
-	  metaForPage["data"] = {};
-	  metaForPage["meta"] = meta["meta"][req.path];
-		metaForPage["renderAnalytics"] = false;
-	
-	  if (req.header("dnt") == 1) {
-	    metaForPage["renderAnalytics"] = false;
-	  }
-	
-	  if (meta.isProduction == true) {
-	    metaForPage["cache"] = true;
-	  }
-		
-		res.render('offline', metaForPage);
-	});	
-};
+if (meta.offline) {
+  app.use((req, res) => {
+    const metaForPage = JSON.parse(JSON.stringify(meta));
+    metaForPage["data"] = {};
+    metaForPage["meta"] = meta["meta"][req.path];
+    metaForPage["renderAnalytics"] = false;
+
+    if (req.header("dnt") == 1) {
+      metaForPage["renderAnalytics"] = false;
+    }
+
+    if (meta.isProduction == true) {
+      metaForPage["cache"] = true;
+    }
+
+    res.render("offline", metaForPage);
+  });
+}
 
 // Routes
 app.use("/response", response);
@@ -160,7 +157,7 @@ app.get("/", async (req, res) => {
 
   if (meta.isProduction == true) {
     metaForPage["cache"] = true;
-  } 
+  }
 
   res.render(`home`, metaForPage);
 });

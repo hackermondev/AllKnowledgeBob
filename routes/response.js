@@ -9,7 +9,6 @@ const openai = require("../client/openai");
 const cached = require("../client/cache");
 const analytics = require("../meta/analytics.json");
 
-
 const limiter = rateLimit({
   windowMs: 15 * 1000,
   max: 5,
@@ -85,7 +84,7 @@ router.get("/:id", async (req, res) => {
     renderAnalytics: true,
     analytics: require("../meta/analytics.json"),
     isProduction: process.env["NODE_ENV"] == "production",
-		banner: {}
+    banner: {},
   });
 });
 
